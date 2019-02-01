@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <h4>NotePadd</h4>
+          <img src="assets/icon/favicon.png" />
+        </div>
+        <form [formGroup]="userForm" (ngSubmit)="guardar()">
+          <div padding>
+            <ion-item
+              [ngClass]="{
+                'error-control':
+                  !nameControl.valid &&
+                  (nameControl.touched || nameControl.dirty)
+              }"
+            >
+              <ion-icon name="person" item-left></ion-icon>
+              <ion-input
+                type="text"
+                formControlName="name"
+                placeholder="Nombres"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item
+              [ngClass]="{
+                'error-control':
+                  !emailControl.valid &&
+                  (emailControl.touched || emailControl.dirty)
+              }"
+            >
+              <ion-icon name="person" item-left></ion-icon>
+              <ion-input
+                type="email"
+                formControlName="email"
+                placeholder="E-mail"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item
+              [ngClass]="{
+                'error-control':
+                  !passwordControl.valid &&
+                  (passwordControl.touched || passwordControl.dirty)
+              }"
+            >
+              <ion-icon name="key" item-left></ion-icon>
+              <ion-input
+                type="password"
+                formControlName="password"
+                placeholder="Contraseña"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item
+              [ngClass]="{
+                'error-control':
+                  !confirmPasswordControl.valid &&
+                  (confirmPasswordControl.touched ||
+                    confirmPasswordControl.dirty)
+              }"
+            >
+              <ion-icon name="key" item-left></ion-icon>
+              <ion-input
+                type="password"
+                formControlName="confirm_password"
+                placeholder="Confirmar contraseña"
+              ></ion-input>
+            </ion-item>
+            <span
+              class="error-message"
+              *ngIf="
+                confirmPasswordControl.hasError('equals') &&
+                confirmPasswordControl.dirty
+              "
+              >Las contraseñas no coinciden</span
+            >
+          </div>
+
+          <div padding>
+            <ion-button
+              expand="block"
+              type="submit"
+              [disabled]="!userForm.valid"
+              >CREAR CUENTA</ion-button
+            >
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

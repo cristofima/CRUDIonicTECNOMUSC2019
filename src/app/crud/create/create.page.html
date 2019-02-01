@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Actividad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label position="floating">Actividad</ion-label>
+    <ion-input [(ngModel)]="title" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-textarea rows="5" [(ngModel)]="description"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha</ion-label>
+    <ion-datetime
+      [(ngModel)]="date"
+      display-format="YYYY-MM-DD"
+      cancelText="Cancelar"
+      doneText="OK"
+    ></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Prioridad</ion-label>
+    <ion-select [(ngModel)]="priority" ok-text="OK" cancel-text="Cancelar">
+      <ion-select-option value="L">Baja</ion-select-option>
+      <ion-select-option value="M">Media</ion-select-option>
+      <ion-select-option value="H">Alta</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button shape="round" expand="full" (click)="guardar()">
+    Guardar
+  </ion-button>
+</ion-content>

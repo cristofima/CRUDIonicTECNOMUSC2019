@@ -1,0 +1,46 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <h4>Iniciar Sesión</h4>
+          <img src="assets/icon/favicon.png" />
+        </div>
+        <form [formGroup]="userForm" (ngSubmit)="login()">
+          <div padding>
+            <ion-item>
+              <ion-icon name="at" item-left></ion-icon>
+              <ion-input
+                formControlName="email"
+                type="email"
+                placeholder="E-mail"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon name="key" item-left></ion-icon>
+              <ion-input
+                formControlName="password"
+                type="password"
+                placeholder="Contraseña"
+              ></ion-input>
+            </ion-item>
+          </div>
+
+          <div padding>
+            <ion-button
+              size="medium"
+              type="submit"
+              [disabled]="!userForm.valid"
+              expand="block"
+              >Login</ion-button
+            >
+          </div>
+        </form>
+        <div padding text-center>
+          <a (click)="goRegister()">Crear cuenta</a>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
